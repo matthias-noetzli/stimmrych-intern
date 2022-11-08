@@ -51,7 +51,7 @@ function checkSignIn(req, res, next){
 
 app.get('/stories', checkSignIn, async function(req, res, next){
    try {
-      let result = await StoryblokPublic.get("cdn/stories/"+req.query.path);
+      let result = await StoryblokPublic.get("cdn/stories/"+req.query.path, {cv: +new Date()});
       res.json(result);
    } catch(error) {
       console.log(error);
@@ -62,7 +62,7 @@ app.get('/stories', checkSignIn, async function(req, res, next){
 
 app.get('/settings', async function(req, res, next){
    try {
-      let result = await StoryblokPublic.get("cdn/stories/settings");
+      let result = await StoryblokPublic.get("cdn/stories/settings", {cv: +new Date()});
       res.json(result);
    } catch(error) {
       console.log(error);

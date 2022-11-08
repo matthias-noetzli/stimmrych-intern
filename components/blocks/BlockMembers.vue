@@ -27,7 +27,9 @@ export default {
   },
   computed: {
     members() {
-      return [...this.block.members].sort();
+      return [...this.block.members].sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
     },
   },
 };
